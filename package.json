@@ -21,6 +21,7 @@
     "dependencies": {
         "@vinext/cloudflare": "^1.4.0",
         "next": "16.4.6",
+        "postcss": "^8.5.33",
         "react": "^19.3.1",
         "react-dom": "^19.3.1",
         "react-server-dom-webpack": "^19.3.1",
@@ -38,7 +39,7 @@
         "@vitejs/plugin-rsc": "^0.5.39",
         "cf": "^1.0.0-rc.2",
         "lefthook": "^2.2.2",
-        "tailwindcss": "4.3.3",
+        "tailwindcss": "^4.3.3",
         "typescript": "^5",
         "vite": "^8.3.0"
     },
