@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+import { StreamListProvider } from "@/providers/StreamListProvider";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -12,18 +9,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
-        <html
-            lang="ja"
-            className={cn(
-                "h-full",
-                "w-full",
-                "antialiased",
-                "overflow-hidden",
-                "font-sans",
-                geist.variable,
-            )}
-        >
-            <body className="min-h-full min-w-full">{children}</body>
+        <html lang="ja" className={"w-full h-full"}>
+            <body className="min-h-full min-w-full overflow-hidden bg-black">
+                <StreamListProvider>{children}</StreamListProvider>
+            </body>
         </html>
     );
 }
