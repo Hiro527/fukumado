@@ -14,6 +14,16 @@ import { IoMdAdd } from "react-icons/io";
 import { useStreamList } from "@/providers/StreamListProvider";
 import { Button } from "./ui/button";
 
+const validateStreamUrl = (url: string) => {
+    // Twitch
+    const twitchRegex = /^(https?:\/\/)?(www\.)?(twitch\.tv\/)([a-zA-Z0-9_]+)$/;
+    // YouTube
+    const youtubeRegex =
+        /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)$/;
+
+    return twitchRegex.test(url) || youtubeRegex.test(url);
+};
+
 const StreamController = () => {
     const { streams, addStream } = useStreamList();
     const [value, setValue] = useState("");
@@ -41,6 +51,12 @@ const StreamController = () => {
                                 render={
                                     <Button
                                         onClick={() => {
+                                            if (!validateStreamUrl(value)) {
+                                                alert(
+                                                    "無効なURLです。TwitchまたはYouTubeの配信URLを入力してください。",
+                                                );
+                                                return;
+                                            }
                                             addStream(value);
                                             setValue("");
                                         }}
